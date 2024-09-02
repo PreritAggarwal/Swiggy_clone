@@ -1,0 +1,32 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .contact-info-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .contact-info-box h2 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-info-box p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .contact-info-box strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  

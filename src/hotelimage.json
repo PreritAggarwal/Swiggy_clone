@@ -1,0 +1,94 @@
+[
+    {
+        "id": 3, 
+        "name": "Neeraj ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b332b16f71c9fbd81ae93d8b51c1a21e",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 1,   
+        "name": "Prerit ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 5, 
+        "name": "Pasha ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/41c2f8fb21110abcf44830e7b0930ffa",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 4, 
+        "name": "Shriya ki Rasoi",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/d1892373c42789d64b43ae5b933bf418",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 2, 
+        "name": "vishal Rao ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 3, 
+        "name": "Neeraj ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b332b16f71c9fbd81ae93d8b51c1a21e",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 1,   
+        "name": "Prerit ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 5, 
+        "name": "Pasha ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/41c2f8fb21110abcf44830e7b0930ffa",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 4, 
+        "name": "Shriya ki Rasoi",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/d1892373c42789d64b43ae5b933bf418",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 2, 
+        "name": "vishal Rao ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 3, 
+        "name": "Neeraj ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b332b16f71c9fbd81ae93d8b51c1a21e",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 1,   
+        "name": "Prerit ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 5, 
+        "name": "Pasha ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/41c2f8fb21110abcf44830e7b0930ffa",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 4, 
+        "name": "Shriya ki Rasoi",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/d1892373c42789d64b43ae5b933bf418",
+        "description": "North Indian, South Indian, Chinese"
+    },
+    {
+        "id": 2, 
+        "name": "vishal Rao ka Dhabha",
+        "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/9/764a689b-830b-4919-b233-d1be28ec4f5c_85ba07e2-9949-44d3-911f-5596b9ff351f.JPG",
+        "description": "North Indian, South Indian, Chinese"
+    }
+   
+]
+ 

@@ -1,0 +1,22 @@
+
+{
+    "foods": [
+      "Pizza",
+      "Burger",
+      "Pasta",
+      "Sushi",
+      "Salad",
+      "Tacos",
+      "Samosa"
+    ],
+    "restaurants": [
+      "Pizza Hut",
+      "McDonald's",
+      "Olive Garden",
+      "Sushi World",
+      "Taco Bell",
+      "Salad Bar",
+      "Indian Bistro"
+    ]
+  }
+  

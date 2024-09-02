@@ -1,0 +1,13 @@
+.footer_container{
+    display: flex;
+    gap: 0 190px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 50px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+.lists{
+    list-style-type: none;
+}
