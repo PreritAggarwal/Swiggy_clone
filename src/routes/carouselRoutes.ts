@@ -1,7 +1,7 @@
 import express from 'express';
-import menuItemController from '../controllers/menuItemController';
+import carouselController from '../controllers/carouselController';
 
 const router = express.Router();
 
-router.get('/carousel/menu-items', menuItemController.getAllMenuItems);
+router.get('/carousel/menu-items', carouselController.getAllMenuItems);
 export default router;

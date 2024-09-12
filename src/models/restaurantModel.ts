@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/db';
-import MenuItem from './menuItemModel';
+
 
 // Define the association
 

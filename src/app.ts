@@ -24,7 +24,7 @@ app.use(express.json());  // Parse JSON request bodies
 app.use('/api/auth', authRoutes);
 app.use('/api', restaurantRoutes);
 app.use('/api', menuItemRoutes);
-// app.use('/api', carouselRoutes);
+app.use('/api', carouselRoutes);
 
 
 const PORT = process.env.PORT || 3000;
