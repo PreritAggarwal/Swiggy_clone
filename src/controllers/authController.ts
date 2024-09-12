@@ -113,4 +113,4 @@ export const resetPassword = async (req: Request, res: Response) => {
     console.error('Reset password error:', error);
     res.status(500).json({ message: 'Server error' });
   }
-};
+}
