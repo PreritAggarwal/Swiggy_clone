@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/LocationModal.css';
+
 
 const LocationModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;

@@ -1,24 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../Style/Carousel.css';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
- 
+import axios from 'axios'; // Import axios
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 const NextArrow = ({ onClick }) => (
-  <button className="arrow-next" onClick={onClick}>
-    <FaArrowRight/>
+  <button
+    className="absolute top-0 right-10 bg-gray-500 bg-opacity-50 text-black p-2 rounded-full z-10"
+    onClick={onClick}
+  >
+    <FaArrowRight />
   </button>
 );
- 
- 
+
 const PrevArrow = ({ onClick }) => (
-  <button className="arrow-prev" onClick={onClick}>
-    <FaArrowLeft/>
+  <button
+    className="absolute top-0 right-20 bg-gray-500 bg-opacity-50 text-black p-2 rounded-full z-10"
+    onClick={onClick}
+  >
+    <FaArrowLeft />
   </button>
 );
- 
-const Carousel = ({ images }) => {
+
+const Carousel = () => {
+  const [carouselImages, setCarouselImages] = useState([]); // Renamed to avoid conflict
+  const [menuItemIds, setMenuItemIds] = useState([]); // To store menu item IDs
+  const navigate = useNavigate(); // Hook for navigation
+
+  // Fetch menu items from the backend
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/carousel/menu-items');
+        setCarouselImages(response.data.map(item => item.image)); // Use response.data directly
+        setMenuItemIds(response.data.map(item => item.id)); // Store IDs for navigation
+      } catch (error) {
+        console.error('Error fetching menu items:', error);
+      }
+    };
+
+    fetchMenuItems();
+  }, []);
+
   const settings = {
     dots: false,
     infinite: false,
@@ -53,40 +78,42 @@ const Carousel = ({ images }) => {
         },
       },
     ],
- 
   };
-  const onFoodItemClick = (foodItemId) => {
- 
-    console.log("clicked")
-    fetch(`/api/menu-items/restMenuItem/search=${foodItemId}`)
-      .then(response => response.json())
-      .then(data => {
-        // Redirect to a page showing the list of restaurants
-        window.location.href = `/restaurants?food_item=${foodItemId}`;
-      })
-      .catch(error => console.error('Error fetching restaurants:', error));
+
+  const onFoodItemClick = async (index) => {
+    try {
+      const menuItemId = menuItemIds[index]; // Get the correct ID based on index
+      const response = await axios.get(`http://localhost:5000/api/carousel/menu-item/${menuItemId}`);
+      const restaurantData = response.data;
+
+      // Navigate to the restaurant details page
+      navigate(`/resturant/menu-items/${restaurantData.id}`);
+    } catch (error) {
+      console.error('Error fetching restaurant details:', error);
+    }
   };
- 
+
   return (
-    <div className="carousel-container">
-      <h2>What's on your mind?</h2>
+    <div className="relative w-4/5 mx-auto py-5">
+      <h2 className="mt-14 text-2xl font-bold">What's on your mind?</h2>
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index} className="carousel-item">
-            <img
-             onClick={onFoodItemClick}
-              src={image}
-              alt={`Dish ${index}`}
-              style={{ width: '100%', borderRadius: '10px' }}
-             
-            />
-          </div>
-        ))}
+        {carouselImages.length > 0 ? (
+          carouselImages.map((image, index) => (
+            <div key={index} className="p-2">
+              <img
+                onClick={() => onFoodItemClick(index)} // Pass the index to get the ID
+                src={image}
+                alt={`Dish ${index}`}
+                className="w-full rounded-lg cursor-pointer"
+              />
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </Slider>
     </div>
   );
 };
- 
+
 export default Carousel;
- 
- 
