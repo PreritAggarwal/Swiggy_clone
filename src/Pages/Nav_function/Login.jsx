@@ -12,7 +12,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await login(email, password);
+             await login(email, password);
             setMessage('Login successful!');
             navigate('/'); 
         } catch (error) {
