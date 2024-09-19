@@ -11,6 +11,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/config/multerConfig.ts"],
   "exclude": ["node_modules"]
 }

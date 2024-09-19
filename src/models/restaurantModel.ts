@@ -2,8 +2,6 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/db';
 
 
-// Define the association
-
 
 
 interface RestaurantAttributes {
@@ -50,6 +48,6 @@ Restaurant.init({
 
 
 // Define the one-to-many relationship
-// Restaurant.hasMany(MenuItem, { foreignKey: 'restaurant_id', as: 'menuItems' });
+// Restaurant.hasMany(MenuItem, { foreignKey: 'restaurant_id', as: 'menu-items' });
 
 export default Restaurant;

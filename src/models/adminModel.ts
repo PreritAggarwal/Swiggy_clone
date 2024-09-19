@@ -1,16 +1,17 @@
-// models/userModel.ts
+// models/adminModel.ts
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/db';
 
-class User extends Model {
+class Admin extends Model {
   public id!: number;
   public email!: string;
   public password!: string;
   public reset_token?: string;
   public reset_token_expiry?: Date;
+  public restaurant_id!: number;
 }
 
-User.init({
+Admin.init({
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -27,13 +28,17 @@ User.init({
   reset_token_expiry: {
     type: DataTypes.DATE,
     allowNull: true
+  },
+  restaurant_id: {
+    type: DataTypes.INTEGER,
+    unique: true,
+    allowNull: true
   }
-  
 }, {
   sequelize,
-  modelName: 'User',
-  tableName: 'users',
-  timestamps: false 
+  modelName: 'Admin',
+  tableName: 'admin',
+  timestamps: false
 });
 
-export default User;
+export default Admin;

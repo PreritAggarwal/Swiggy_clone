@@ -1,78 +1,78 @@
-// controllers/authController.ts
+// controllers/adminAuthController.ts
 import { Request, Response } from 'express';
-import { Op } from 'sequelize';
 import bcrypt from 'bcryptjs';
+import { Op } from 'sequelize';
 import jwt from 'jsonwebtoken';
-import User from '../models/userModel';
+import Admin from '../models/adminModel';
 import { validatePassword } from '../utils/validatePassword';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
-export const signup = async (req: Request, res: Response) => {
+export const adminSignup = async (req: Request, res: Response) => {
   const { email, password } = req.body;
+  console.log(req.body ,"ok tets")
 
   try {
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+    const existingAdmin = await Admin.findOne({ where: { email } });
+    if (existingAdmin) {
+      return res.status(400).json({ message: 'Admin already exists' });
     }
+
     if (!validatePassword(password)) {
       return res.status(400).json({ message: 'Password does not meet complexity requirements' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    await User.create({ email, password: hashedPassword });
+    console.log(hashedPassword ,"clear");
+    await Admin.create({ email, password: hashedPassword });
+    
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: 'Admin created successfully' });
   } catch (error) {
-    console.error('Signup error:', error);
+    console.error('Admin signup error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-export const login = async (req: Request, res: Response) => {
+export const adminLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
+    const admin = await Admin.findOne({ where: { email } });
+    if (!admin) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    console.log(password,user.password,"check 1")
+    const isValidPassword = await bcrypt.compare(password, admin.password);
     if (!isValidPassword) {
-      console.log(password,isValidPassword,user.password,"check 2")
-
+      console.log(password,isValidPassword,admin.password,"test case 2");
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || 'secret', {
+    const token = jwt.sign({ adminId: admin.id }, process.env.JWT_SECRET || 'secret', {
       expiresIn: '1h',
     });
 
-    res.status(200).json({ token });
+    res.status(200).json({ adminId: admin.id });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Admin login error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-
-
-export const forgotPassword = async (req: Request, res: Response) => {
+export const adminForgotPassword = async (req: Request, res: Response) => {
   const { email } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
-      return res.status(400).json({ message: 'User does not exist' });
+    const admin = await Admin.findOne({ where: { email } });
+    if (!admin) {
+      return res.status(400).json({ message: 'Admin does not exist' });
     }
 
     const token = crypto.randomBytes(20).toString('hex');
     const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
 
-    await user.update({ reset_token: token, reset_token_expiry: resetTokenExpiry });
+    await admin.update({ reset_token: token, reset_token_expiry: resetTokenExpiry });
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -82,52 +82,40 @@ export const forgotPassword = async (req: Request, res: Response) => {
       },
     });
 
-    const resetUrl = `http://localhost:3000/resetpassword/${token}`;
+    const resetUrl = `http://localhost:3000/admin/resetpassword/${token}`;
     await transporter.sendMail({
       to: email,
-      subject: 'Password Reset Request',
+      subject: 'Admin Password Reset Request',
       text: `You requested a password reset. Click the link to reset your password: ${resetUrl}`,
     });
 
     res.status(200).json({ message: 'Reset link sent' });
   } catch (error) {
-    console.error('Forgot password error:', error);
+    console.error('Admin forgot password error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-
-export const resetPassword = async (req: Request, res: Response) => {
+export const adminResetPassword = async (req: Request, res: Response) => {
   const { token, password } = req.body;
 
-  console.log('Reset Password Request:', { token, password }); // Debug logging
-
-  if (!token || !password) {
-    return res.status(400).json({ message: 'Token and password are required' });
-  }
-
   try {
-    const user = await User.findOne({
+    const admin = await Admin.findOne({
       where: {
         reset_token: token,
         reset_token_expiry: { [Op.gt]: new Date() }
       }
     });
-
-    if (!user) {
+    if (!admin) {
       return res.status(400).json({ message: 'Invalid or expired token' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    await user.update({
-      password: hashedPassword,
-      reset_token: null,
-      reset_token_expiry: null
-    });
+    await admin.update({ password: hashedPassword, reset_token: null, reset_token_expiry: null });
 
     res.status(200).json({ message: 'Password reset successful' });
   } catch (error) {
-    console.error('Reset password error:', error);
+    console.error('Admin reset password error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };

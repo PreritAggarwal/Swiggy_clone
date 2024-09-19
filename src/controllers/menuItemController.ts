@@ -7,7 +7,7 @@ import { Op } from 'sequelize';
 const getAllMenuItems = async (req: Request, res: Response) => {
     try {
         const menuItems = await MenuItem.findAll({
-            include: [{ model: Restaurant, as: 'restaurant' }]
+            include: [{ model: Restaurant, as: 'restaurants' }]
         });
         res.json(menuItems);
     } catch (error) {
