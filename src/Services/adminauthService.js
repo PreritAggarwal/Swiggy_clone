@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth'; 
+const API_URL = 'http://localhost:5000/api/admin'; 
 
 // Signup function
 export const signup = async (name, email, password) => {
@@ -35,7 +35,7 @@ export const forgotPassword = async (email) => {
 // Reset Password function
 export const resetPassword = async (token, newPassword) => {
   try {
-    const response = await axios.post(`${API_URL}/reset-password`, { token, password: newPassword });
+    const response = await axios.post(`${API_URL}/resetpassword`, { token, newPassword });
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Failed to reset password';

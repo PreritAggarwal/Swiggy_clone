@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { resetPassword } from '../../Services/authService';
+import { resetPassword } from '../../Services/adminauthService';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ResetPassword = () => {
@@ -8,21 +8,16 @@ const ResetPassword = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleResetPassword = async () => {
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
     try {
-      if (!newPassword || !token) {
-        setMessage('Token and new password are required');
-        return;
-      }
-      
       await resetPassword(token, newPassword);
-      setMessage('Password reset successful');
-      navigate('/login');
+      setMessage('Password reset successful! You can now login.');
+      navigate('/admin-login');
     } catch (error) {
-      setMessage(error.message || 'Failed to reset password');
+      setMessage(error);
     }
   };
-
 
   return (
     <div className="reset-password">

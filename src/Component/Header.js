@@ -23,27 +23,27 @@ const Header = () => {
 
         <div className="nav-content">
           <ul className="list flex items-center gap-x-12">
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
               <FaBriefcase /> Swiggy Corporate
             </li>
             <Link to="/search" className="no-underline text-inherit">
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
                 <FaSearch /> Search
               </li>
             </Link>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
               <FaGift /> Offers
             </li>
             <Link to="/contact" className="no-underline text-inherit">
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
                 <FaLifeRing /> Help
               </li>
             </Link>
             <Link to="/login" className="no-underline text-inherit flex items-center gap-2">
-              <FaSignInAlt /> Sign In
+             <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500"> <FaSignInAlt /> Sign In </li>
             </Link>
             <Link to="/cart" className="no-underline text-inherit">
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
                 <FaShoppingCart /> Cart
               </li>
             </Link>

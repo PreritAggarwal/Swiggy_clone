@@ -21,7 +21,7 @@ const HotelGrid = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
+    <div className="grid grid-cols-4 gap-5 mx-40">
       {hotels.length > 0 ? (
         hotels.map((hotel, index) => (
           <Link

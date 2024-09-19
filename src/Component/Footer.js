@@ -3,7 +3,7 @@ import image from '../Assets/Images/footerimg.jpg';
 
 const Footer = () => {
   return (
-    <div className="flex gap-x-48 items-center justify-evenly py-12 px-12 border-t-2 border-black bg-black text-white">
+    <div className="flex gap-x-48 items-center justify-evenly py-12 px-12 border-t-2 border-black bg-black text-white mt-auto">
       <div>
         <ul className="list-none">
           <li>

@@ -11,6 +11,7 @@ function HotelGrid({ hotels, addToCart }) {
             name={hotel.name}
             image={hotel.image}
             price={hotel.price}
+            
             addToCart={() => addToCart(hotel)} 
           />
         ))

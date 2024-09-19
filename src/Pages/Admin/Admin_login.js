@@ -1,43 +1,45 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'; 
-import { login } from '../../Services/authService'; 
-import Img1 from '../../Assets/Images/swigy_one.jpg'; 
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../../Services/adminauthService';
+import Img1 from '../../Assets/Images/swigy_one.jpg';
 
 const Login = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await login(email, password);
-            toast.success('Login successful!');
-            navigate('/'); 
+            const response = await login(email, password);
+            // Check if the response data is as expected
+            console.log('Login response:', response);
+    
+            // Ensure the response contains both token and adminId
+            localStorage.setItem('adminId', response.adminId);
+            setMessage('Login successful!');
+            navigate(`/welcome`, { state: { adminId: response.adminId } });
         } catch (error) {
-            toast.error('Login failed. Please check your credentials.');
+            // Log error details
+            console.error('Login error:', error);
+            setMessage('Login failed. Please check your credentials.');
         }
     };
 
     const handleCreateAccountClick = () => {
-        navigate('/signup'); 
+        navigate('/admin-signup');
     };
 
     const handleForgotPasswordClick = () => {
-        navigate('/ForgotPassword'); 
-    };
-
-    const handleAdminLoginClick = () => {
-        navigate('/admin-login'); // Admin login navigation
+        navigate('/admin-ForgotPassword');
     };
 
     return (
         <div className="flex flex-col items-center justify-center h-screen p-5">
             <div className="flex w-[30vw] h-[20vh] justify-between items-center mb-5">
                 <div className="flex flex-col items-start">
-                    <h2 className="text-2xl text-gray-800 mb-2">Login</h2>
+                    <h2 className="text-2xl text-gray-800 mb-2">Admin_Login</h2>
                     <p className="text-lg text-gray-600">
                         or{' '}
                         <span
@@ -84,18 +86,8 @@ const Login = () => {
                 >
                     Forgot your password?
                 </p>
-                <p className="text-gray-600 mt-2 w-screen flex justify-center">
-                    Are you an admin?{' '}
-                    <span 
-                        className="text-orange-600 cursor-pointer"
-                        onClick={handleAdminLoginClick}
-                    >
-                        Admin Login
-                    </span>
-                </p>
+                {message && <p className="text-red-600 mt-3">{message}</p>}
             </div>
-
-            <ToastContainer />
         </div>
     );
 };
