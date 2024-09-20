@@ -22,6 +22,10 @@
 
   "dependencies": {
 
+    "@types/swagger-jsdoc": "^6.0.4",
+
+    "@types/swagger-ui-express": "^4.1.6",
+
     "bcryptjs": "^2.4.3",
 
     "cors": "^2.8.5",
@@ -40,6 +44,8 @@
 
     "nodemailer": "^6.9.15",
 
+    "openapi-types": "^12.1.3",
+
     "passport-google-oauth20": "^2.0.0",
 
     "razorpay": "^2.9.4",
@@ -48,7 +54,11 @@
 
     "sequelize": "^6.37.3",
 
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+
+    "swagger-jsdoc": "^6.2.8",
+
+    "swagger-ui-express": "^5.0.1"
 
   },
 

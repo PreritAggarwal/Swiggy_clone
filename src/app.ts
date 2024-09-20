@@ -8,13 +8,14 @@ import adminRoutes from './routes/adminRoutes'
 import cors from 'cors';
 import sequelize from './config/db'; // Adjust the path if necessary
 import payment from './routes/payment'; 
+import setupSwaggerDocs from './config/swagger';
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000' ,
+  origin: ['http://localhost:3000', 'http://localhost:5000'], 
 }));
 
 // const syncModels = async () => {
@@ -30,6 +31,7 @@ app.use(cors({
 
 // Middleware
 app.use(express.json());  // Parse JSON request bodies
+setupSwaggerDocs(app);
 
 // Routes
 app.use('/api/auth', authRoutes);

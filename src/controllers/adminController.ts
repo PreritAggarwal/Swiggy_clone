@@ -9,6 +9,7 @@ import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
 export const adminSignup = async (req: Request, res: Response) => {
+  console.log(req);
   const { email, password } = req.body;
   console.log(req.body ,"ok tets")
 
@@ -53,7 +54,7 @@ export const adminLogin = async (req: Request, res: Response) => {
       expiresIn: '1h',
     });
 
-    res.status(200).json({ adminId: admin.id });
+    res.status(200).json({ message: 'Admin Login Succesfull' ,adminId: admin.id });
   } catch (error) {
     console.error('Admin login error:', error);
     res.status(500).json({ message: 'Server error' });
