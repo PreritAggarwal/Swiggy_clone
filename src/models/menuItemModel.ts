@@ -7,7 +7,7 @@ interface MenuItemAttributes {
     name: string;
     price: number;
     image: string;
-    restaurant_id: number;
+    restaurant_id: any;
 }
 
 class MenuItem extends Model<MenuItemAttributes> implements MenuItemAttributes {

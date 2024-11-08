@@ -104,7 +104,8 @@ const adminSwaggerDocs = {
           200: { description: 'A list of restaurants' },
         },
       },
-      post: {tags: ['Admin'],
+      post: {
+        tags: ['Admin'],
         summary: 'Create a restaurant for admin',
         parameters: [
           {
@@ -130,27 +131,33 @@ const adminSwaggerDocs = {
               },
             },
           },
-          responses: {
-            201: { description: 'Restaurant created successfully' ,
-                
-                content: {
-                  'application/json': {
-                    schema: {
-                      type: 'object',
-                      properties: {
-                        restaurantId: { type: 'string' },
-                        
-                      },
-                    },
+        },
+        responses: {
+          200: {
+            description: 'Restaurant created successfully',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    restaurantId: { type: 'string' },
                   },
                 },
-
-             },
+              },
+            },
+          },
+          400: {
+            description: 'Invalid input',
+          },
+          404: {
+            description: 'Admin not found',
+          },
+          500: {
+            description: 'Internal Server Error',
           },
         },
       },
     },
-   
   },
 };
 

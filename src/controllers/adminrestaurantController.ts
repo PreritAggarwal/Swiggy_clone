@@ -67,7 +67,7 @@ const createRestaurantForAdmin = async (req: Request, res: Response) => {
     console.log(newrestaurant.id,"id check");
     await admin.update({ restaurant_id: newrestaurant.id });
 
-    res.status(201).json({ message: 'Restaurant created successfully' , restaurantId: newrestaurant.id });
+    res.status(200).json({ message: 'Restaurant created successfully' , restaurantId: newrestaurant.id });
   } catch (error) {
     console.error('Error creating restaurant:', error);
     res.status(500).json({ error: 'Internal Server Error' });

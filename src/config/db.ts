@@ -30,4 +30,16 @@ const sequelize = new Sequelize({
   logging: false, // Set to true if you want to see SQL queries in the console
 });
 
+const syncDatabase = async () => {
+  try {
+    await sequelize.sync({ alter: true }); // Use { force: true } if you want to drop existing tables and recreate them
+    console.log('Database synced successfully!');
+  } catch (error) {
+    console.error('Error syncing database:', error);
+  }
+};
+
+syncDatabase();
+
+
 export default sequelize;

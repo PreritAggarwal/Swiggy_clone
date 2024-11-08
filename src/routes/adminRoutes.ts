@@ -3,6 +3,7 @@ import express  from 'express';
 import { adminSignup, adminLogin, adminForgotPassword, adminResetPassword } from '../controllers/adminController';
 import adminRestaurantController from '../controllers/adminrestaurantController';
 import adminMenuItemController from '../controllers/adminmenuController';
+import verifyAdminRole from '../Middleware/adminmiddleware'
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.post('/forgotpassword', adminForgotPassword);
 router.post('/resetpassword', adminResetPassword);
 // Admin Restaurant Routes
 router.get('/admin/:adminId/restaurants', adminRestaurantController.getAllRestaurantsForAdmin);
-router.post('/admin/:adminId/restaurants', adminRestaurantController.createRestaurantForAdmin);
+router.post('/admin/:adminId/restaurants',verifyAdminRole, adminRestaurantController.createRestaurantForAdmin);
 router.put('/admin/:adminId/restaurants/:id', adminRestaurantController.updateRestaurantForAdmin);
 router.delete('/admin/:adminId/restaurants/:id', adminRestaurantController.deleteRestaurantForAdmin);
 
