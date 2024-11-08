@@ -4,7 +4,7 @@ import { FaSearch, FaGift, FaLifeRing, FaSignInAlt, FaShoppingCart, FaBriefcase 
 import LocationModal from '../Pages/Nav_function/LocationModal';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ isAdmin }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -23,30 +23,51 @@ const Header = () => {
 
         <div className="nav-content">
           <ul className="list flex items-center gap-x-12">
-            <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
-              <FaBriefcase /> Swiggy Corporate
-            </li>
+            {!isAdmin && (
+              <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
+                <FaBriefcase /> Swiggy Corporate
+              </li>
+            )}
+
             <Link to="/search" className="no-underline text-inherit">
               <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
                 <FaSearch /> Search
               </li>
             </Link>
-            <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
-              <FaGift /> Offers
-            </li>
-            <Link to="/contact" className="no-underline text-inherit">
+
+            {!isAdmin && (
               <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
-                <FaLifeRing /> Help
+                <FaGift /> Offers
               </li>
-            </Link>
-            <Link to="/login" className="no-underline text-inherit flex items-center gap-2">
-             <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500"> <FaSignInAlt /> Sign In </li>
-            </Link>
-            <Link to="/cart" className="no-underline text-inherit">
-              <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
-                <FaShoppingCart /> Cart
+            )}
+
+            {!isAdmin && (
+              <Link to="/contact" className="no-underline text-inherit">
+                <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
+                  <FaLifeRing /> Help
+                </li>
+              </Link>
+            )}
+
+            {!isAdmin ? (
+              <Link to="/login" className="no-underline text-inherit flex items-center gap-2">
+                <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
+                  <FaSignInAlt /> Sign In
+                </li>
+              </Link>
+            ) : (
+              <li className="flex items-center gap-2  text-gray-700">
+                Admin
               </li>
-            </Link>
+            )}
+
+            {!isAdmin && (
+              <Link to="/cart" className="no-underline text-inherit">
+                <li className="flex items-center gap-2  text-gray-700 hover:text-blue-500">
+                  <FaShoppingCart /> Cart
+                </li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>

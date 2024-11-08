@@ -56,7 +56,9 @@ function Welcome() {
 
   return (
     <>
-      <Header />
+      {/* Pass isAdmin={true} to disable some header functionality */}
+      <Header isAdmin={true} />
+
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         {loading ? (
           <p className="text-lg text-gray-700">Loading...</p>

@@ -13,15 +13,14 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await login(email, password);
-            // Check if the response data is as expected
             console.log('Login response:', response);
-    
-            // Ensure the response contains both token and adminId
+
+            // Save adminId and role in localStorage
             localStorage.setItem('adminId', response.adminId);
+            localStorage.setItem('role', response.role); // Save the role if available
             setMessage('Login successful!');
-            navigate(`/welcome`, { state: { adminId: response.adminId } });
+            navigate(`/welcome`, { state: { adminId: response.adminId, role: response.role } }); // Pass role to welcome page
         } catch (error) {
-            // Log error details
             console.error('Login error:', error);
             setMessage('Login failed. Please check your credentials.');
         }
@@ -39,7 +38,7 @@ const Login = () => {
         <div className="flex flex-col items-center justify-center h-screen p-5">
             <div className="flex w-[30vw] h-[20vh] justify-between items-center mb-5">
                 <div className="flex flex-col items-start">
-                    <h2 className="text-2xl text-gray-800 mb-2">Admin_Login</h2>
+                    <h2 className="text-2xl text-gray-800 mb-2">Admin Login</h2>
                     <p className="text-lg text-gray-600">
                         or{' '}
                         <span

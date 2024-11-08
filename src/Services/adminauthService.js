@@ -3,9 +3,9 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5000/api/admin'; 
 
 // Signup function
-export const signup = async (name, email, password) => {
+export const signup = async (name, email, password, role_name) => { // Accept role parameter
   try {
-    const response = await axios.post(`${API_URL}/signup`, { name, email, password });
+    const response = await axios.post(`${API_URL}/signup`, { name, email, password, role_name });
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Signup failed';
@@ -41,4 +41,3 @@ export const resetPassword = async (token, newPassword) => {
     throw error.response?.data?.message || 'Failed to reset password';
   }
 };
-

@@ -8,12 +8,13 @@ function Signup() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('admin'); // Add role state
     const [message, setMessage] = useState('');
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await signup(name, email, password);
+            await signup(name, email, password, role); // Pass role to signup function
             setMessage('Signup successful! You can now login.');
             navigate('/admin-login'); 
         } catch (error) {
@@ -66,6 +67,14 @@ function Signup() {
                         maxLength="10"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <input 
+                        className="w-full h-[10vh] p-2 mb-3 border border-gray-300 rounded-md text-lg box-border"
+                        id="role"
+                        type="text"
+                        placeholder="Enter role (admin/user)"
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
                     />
                     <p className="text-lg text-gray-600 mb-3">Have a referral code?</p>
                     <button
