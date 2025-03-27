@@ -8,7 +8,7 @@ const verifyAdminRole = async (req: Request, res: Response, next: NextFunction) 
     if (isNaN(adminId)) {
       return res.status(400).json({ error: 'Invalid adminId' });
     }
-console.log(adminId,'chk de');
+
     // Find the admin by ID
     const admin = await Admin.findByPk(adminId, {
       include: [{ model: Role, as: 'role' }] // Include the role with alias 'role'
